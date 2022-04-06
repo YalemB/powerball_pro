@@ -1,3 +1,4 @@
 from Draws import Draw
 
-print(Draw())
+x = Draw()
+print(x)

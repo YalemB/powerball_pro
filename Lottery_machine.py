@@ -1,9 +1,8 @@
 import random
+from colorama import Fore, Back, Style
 
 
 class WhiteBallsNpwoer():
-    def __init__(self):
-        self.res = "Today's Powerball Winning Numbers:\n {} {} {} {} {} Power Ball {}"
 
     def dailyNums(self):
         nums = []

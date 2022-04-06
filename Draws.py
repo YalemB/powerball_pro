@@ -1,17 +1,20 @@
 from Lottery_machine import WhiteBallsNpwoer
 from Player_nums import Player
-import  colorama
+from colorama import Fore, Back, Style
 
-class Draw(Player):
+
+class Draw():
     def __init__(self):
         super().__init__()
-        self.title = "CHECK NUMBERS"
+        self.title = Back.RED + "CHECK NUMBERS" + Style.RESET_ALL
         self.__lottery = WhiteBallsNpwoer()
         self.__player_nums = Player()
         self.x = self.__lottery.dailyNums()  # lottery numbers
         self.y = self.__player_nums.dailyNums()  # player lucky numbers
         self.p = self.__lottery.strog_num()  # lottery power number
         self.s = self.__player_nums.strog_num()  # player strong number
+        self.res = "Today's Powerball Winning Numbers:\n" + Fore.BLUE + " {} {} {} {} {} " + Fore.YELLOW + "{}" + Style.RESET_ALL
+        self.p_res = "Your lucky numbers:\n" + Fore.BLUE + " {} {} {} {} {} " + Style.RESET_ALL + Fore.YELLOW + "{}" + Style.RESET_ALL
 
     def check_win(self):  # check how many numbers the player got right
         self.c = 0
@@ -20,31 +23,29 @@ class Draw(Player):
             self.c += self.n
         if self.s == self.p:
             if self.c == 5:
-                return "Correct White Balls and the Powerball: Jackpot $324,000,000"
+                return "Correct White Balls and the Powerball: " + Fore.YELLOW + "Jackpot $324,000,000"
             elif self.c == 4:
-                return "4 Correct White Balls and the Powerball: $10,000"
+                return Fore.YELLOW + "4 " + Style.RESET_ALL + "Correct White Balls and the Powerball: " + Fore.YELLOW + "$10,000"
             elif self.c == 3:
-                return "3 Correct White Balls and the Powerball: $100"
+                return Fore.YELLOW + "3 " + Style.RESET_ALL + "Correct White Balls and the Powerball: " + Fore.YELLOW + "$100"
             elif self.c == 2:
-                return "2 Correct White Balls and the Powerball: $7"
+                return Fore.YELLOW + "2 " + Style.RESET_ALL + "Correct White Balls and the Powerball: " + Fore.YELLOW + "$7"
             elif self.c == 1:
-                return "1 Correct White Ball and the Powerball: $4"
+                return Fore.YELLOW + "1 " + Style.RESET_ALL + "Correct White Ball and the Powerball: " + Fore.YELLOW + "$4"
             else:
-                return "No White Balls, Just the Powerball: $4"
+                return "No White Balls, Just the Powerball: " + Fore.YELLOW + "$4"
 
         elif self.s != self.p:
             if self.c == 5:
-                return "5 Correct White Balls, but no Powerball: $1,000,000"
+                return Fore.YELLOW + "5 " + Style.RESET_ALL + "Correct White Balls, but no Powerball:" + Fore.YELLOW + "$1,000,000"
             elif self.c == 4:
-                return "4 Correct White Balls, but no Powerball: $100"
+                return Fore.YELLOW + "4 " + Style.RESET_ALL + "Correct White Balls, but no Powerball:" + Fore.YELLOW + "$100"
             elif self.c == 3:
-                return "3 Correct White Balls, but no Powerball: $7"
+                return Fore.YELLOW + "3 " + Style.RESET_ALL + "Correct White Balls, but no Powerball: " + Fore.YELLOW + "$7"
             else:
-                return "Try again!"
-
+                return Fore.RED + "Try again!"
 
     def __str__(self):
-        self.__res = self.res.format(*self.x, self.p)
-        self.__p_res = self.p_res.format(*self.y, self.s)
-        return self.__res + "\n" + self.__p_res + "\n" +self.check_win()
-
+        self.res = self.res.format(*self.x, self.p)
+        self.p_res = self.p_res.format(*self.y, self.s)
+        return self.title + "\n" + self.res + "\n" + self.p_res + "\n" + self.check_win()
