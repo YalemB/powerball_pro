@@ -1,9 +1,9 @@
 from Draws import Draw
 from colorama import Fore, Back, Style
-y = input(Fore.BLUE +"Enter name to play : ")
+y = input("Enter name to play : ")
 i = 0
 z = 0
-print("5 rounds Game"+ Style.RESET_ALL)
+print("5 rounds Game")
 while i < 5:
     x = Draw(y)
     print(x)
@@ -15,10 +15,10 @@ while i < 5:
     i +=1
 
 if z > 0:
-    print(Fore.BLUE +f"Congrats You won"+Style.RESET_ALL+Fore.YELLOW+F" {z}$")
+    print("Congrats You won"+Style.RESET_ALL+Fore.YELLOW+F" {z}$"+Style.RESET_ALL)
 else:
-    print(Fore.BLUE +"you didn't won anything!!\ngood luck next time!!")
-print( Fore.BLUE + "GAME OVER !!")
+    print("you didn't won anything!!\ngood luck next time!!")
+print( "GAME OVER !!")
 
 
 
