@@ -20,8 +20,8 @@ class Draw():
     def check_win(self):  # check how many numbers the player got right
         self.c = 0
         for i in self.x:
-            self.n = self.y.count(i)
-            self.c += self.n
+            if i in self.y:
+                self.c += 1
         if self.s == self.p:
             if self.c == 5:
                 return "Correct White Balls and the Powerball: " + Fore.YELLOW + "Jackpot $324,000,000"
